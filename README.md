@@ -2,7 +2,7 @@
 
 Playing around with halos and galaxies.
 
-### [Demo]()
+### [Demo](http://nbviewer.ipython.org/github/drphilmarshall/match.halos/blob/master/match.ipynb)
 
 * Phil Marshall (KIPAC)
 * Sam Skillman (KIPAC)
