@@ -53,6 +53,7 @@ docs/_build/
 # PyBuilder
 target/
 
-# Products, history etc
+# Notebook checkpoints, products, history etc
 attic
 *.csv
+.ipynb_checkpoints

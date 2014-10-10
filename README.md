@@ -1,6 +1,6 @@
 # match.halos
 
-Playing around with halos and galaxies.
+Matchmaking between halos and galaxies. Hopefully the beginning of a billion beautiful friendships.
 
 ### [Demo](http://nbviewer.ipython.org/github/drphilmarshall/match.halos/blob/master/match.ipynb)
 
