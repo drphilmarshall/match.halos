@@ -41,31 +41,35 @@ print galaxies
 # This SQL checks out at the [SkyServer SQL
 # box](http://skyserver.sdss3.org/dr9/en/tools/search/sql.asp), which has
 # a syntax checking option.
-data = np.loadtxt(SDSS_select(galaxies), skiprows=1)
-mytype = np.dtype([('id', 'int'),
-                   ('ra', 'float'),
-                   ('dec', 'float'),
-                   ('redshift', 'float'),
-                   ('u', 'float'),
-                   ('g', 'float'),
-                   ('r', 'float'),
-                   ('i', 'float'),
-                   ('z', 'float'),
+gal_file = SDSS_select(galaxies)
+mytype = np.dtype([('id', 'int64'),
+                   ('ra', 'float32'),
+                   ('dec', 'float32'),
+                   ('redshift', 'float32'),
+                   ('u', 'float32'),
+                   ('g', 'float32'),
+                   ('r', 'float32'),
+                   ('i', 'float32'),
+                   ('z', 'float32'),
                    ])
-data = data.astype(mytype)
-lumin_sorted = np.sort(data, axis='r')
+data = np.loadtxt(gal_file, dtype=mytype, delimiter=',', skiprows=2)
+data.sort(order='r')
+data = data[::-1]
 
 header = """# SDF 1.0
 parameter byteorder = 0x78563412;
 #SDSS Galaxies
 #%s
 struct{
-    int32_t id;
+    int64_t id;
     float ra, dec, redshift;
     float u, g, r, i, z;
 };
+#\x0c
+# SDF-EOH
 """ % galaxies
 
 f = file("galaxies.sdf", "wb")
+f.write(header)
 data.tofile(f)
 f.close()
